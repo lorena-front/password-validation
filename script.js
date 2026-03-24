@@ -1,4 +1,5 @@
 const outputList = document.querySelector('.outputList');
+const outputContent = document.querySelector('.outputContent');
 
 function messageLi(message) {
     const newLi = document.createElement('li');
@@ -6,11 +7,20 @@ function messageLi(message) {
     outputList.append(newLi);
 };
 
+function messagePassword(message) {
+    outputContent.innerHTML = message;
+};
+
 function passwordValidation() {
     const passwordInput = document.getElementById('passwordInput');
-    const outputContent = document.querySelector('.outputContent');
-    
-    password = passwordInput.value;
+    const inputPassword = passwordInput.value;
+    const password = inputPassword.trim();
+
+    if (password.length <= 0) {
+        outputList.innerHTML = '';
+        messagePassword("Please, write something!");
+        return;
+    }
 
     let strongPoints = 0;
 
@@ -34,7 +44,7 @@ function passwordValidation() {
         strongPoints += 1;
         messageLi("Uppercase ✅");
     }  else {
-        messageLi("Needs at least a uppercase character ❌");
+        messageLi("Needs at least an uppercase character ❌");
     }
     
     if (/[a-z]/.test(password)) {
@@ -52,7 +62,7 @@ function passwordValidation() {
     }
 
     let hasRepeated = false;
-    for (let i = 0; i < password.length; i++) {
+    for (let i = 0; i < password.length - 1; i++) {
         if (password[i] === password[i + 1]) {
             strongPoints -= 1;
             hasRepeated = true;
@@ -66,27 +76,23 @@ function passwordValidation() {
         messageLi("Without repeated characters ✅");
     }
 
-    if (password.length <= 0) {
-        outputContent.innerHTML = "Please, write something!";
+    if (strongPoints === 0) {
+        messagePassword("Level: Zero");
+        return;
+    } else if (strongPoints === 5) {
+        messagePassword("Level: Strong");
+        return;
+    } else if (strongPoints <= 2) {
+        messagePassword("Level: Too Weak");
+        return;
+    } else if (strongPoints === 3) {
+        messagePassword("Level: Medium");
+        return;
     } else {
-        if (strongPoints === 5) {
-            outputContent.innerHTML = "Level: Strong";
-        }
-
-        if (strongPoints >= 1 && strongPoints <= 2) {
-            outputContent.innerHTML = "Level: Too Weak";
-        }
-
-        if (strongPoints === 3) {
-            outputContent.innerHTML = "Level: Medium";
-        }
-
-        if (strongPoints === 4) {
-            outputContent.innerHTML = "Level: Nice";
-        }
+        messagePassword("Level: Nice");
     }
 
-    return strongPoints;
+    // return strongPoints;
 };
 
-module.exports = passwordValidation;
+// module.exports = passwordValidation;
