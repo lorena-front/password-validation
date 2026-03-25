@@ -4,14 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Validation ✨</title>
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
+        rel="stylesheet">
 </head>
 <body>
-    <label for="passwordInput">Enter your password:</label>
-    <input type="text" name="passwordInput" id="passwordInput">
-    <button type="button" onclick="passwordValidation()">Submit</button>
-    <div class="outputContent"></div>
-    <div class="outputList"></div>
-
+    <main>
+        <div class="card">
+            <label for="passwordInput">Enter your password:</label>
+            <input type="text" name="passwordInput" id="passwordInput">
+            <button type="button" onclick="passwordValidation()">Submit</button>
+            <div class="outputContent"></div>
+            <div class="outputList">
+                <p>
+                    Check how strong your password is <br>
+                    and see what it still needs ✨
+                </p>
+            </div>
+        </div>
+    </main>
+    
     <script src="./script.js"></script>
 </body>
 </html>
