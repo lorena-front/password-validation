@@ -6,18 +6,29 @@ const uppercaseItem = document.querySelector('#uppercase span');
 const lowercaseItem = document.querySelector('#lowercase span');
 const specialItem = document.querySelector('#special span');
 const repeatItem = document.querySelector('#repeat span');
+const spaceItem = document.querySelector('#space span');
 
 function messagePassword(message) {
     outputContent.innerHTML = message;
 };
 
+function resetMessage() {
+    lengthItem.textContent = '❌';
+    uppercaseItem.textContent = '❌';
+    digitItem.textContent = '❌';
+    uppercaseItem.textContent = '❌';
+    lowercaseItem.textContent = '❌';
+    specialItem.textContent = '❌';
+    repeatItem.textContent = '❌';
+    spaceItem.textContent = '❌';
+    messagePassword("Level: Zero");
+};
+
 function passwordValidation(password) {
-    // password.trim();
+    password.trim();
 
     if (password.length <= 0) {
-        repeatItem.textContent = '❌';
-        lowercaseItem.textContent = '❌';
-        messagePassword("Level: Zero")
+        resetMessage();
         return;
     }
 
@@ -58,6 +69,14 @@ function passwordValidation(password) {
         specialItem.textContent = '❌';
     }
 
+    hasSpace = false;
+    if (/\s/.test(password)) {
+        strongPoints -= 1;
+        hasSpace = true;
+    }
+
+    spaceItem.textContent = hasSpace ? '❌' : '✅';
+
     let hasRepeated = false;
     for (let i = 0; i < password.length - 1; i++) {
         if (password[i] === password[i + 1]) {
@@ -67,11 +86,7 @@ function passwordValidation(password) {
         }
     }
 
-    if (hasRepeated) {
-        repeatItem.textContent = '❌';
-    } else {
-        repeatItem.textContent = '✅';
-    }
+    repeatItem.textContent = hasRepeated ? '❌' : '✅';
 
     if (strongPoints === 0) {
         messagePassword("Level: Zero");
