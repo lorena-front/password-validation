@@ -16,16 +16,23 @@
         <div class="card">
             <label for="passwordInput">Enter your password:</label>
             <input type="text" name="passwordInput" id="passwordInput">
-            <button type="button" onclick="passwordValidation()">Submit</button>
-            <div class="outputContent"></div>
-            <div class="outputList">
-                <p>
-                    Check how strong your password is <br>
-                    and see what it still needs ✨
-                </p>
-            </div>
+            <!-- <button type="button" onclick="passwordValidation()">Submit</button> -->
+            <div class="outputContent"><p>Level: Zero</p></div>
+            <ul class="outputList">
+                <li id="length">At least 8 characters <span>❌</span></li>
+                <li id="digit">Digits <span>❌</span></li>
+                <li id="uppercase">Uppercase <span>❌</span></li>
+                <li id="lowercase">Lowercase <span>❌</span></li>
+                <li id="special">Special characters <span>❌</span></li>
+                <li id="repeat">Without repeated characters <span>❌</span></li>
+            </ul>
         </div>
     </main>
+
+    <!-- <p>
+        Check how strong your password is <br>
+        and see what it still needs ✨
+    </p> -->
     
     <script src="./script.js"></script>
 </body>

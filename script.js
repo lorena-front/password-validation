@@ -1,64 +1,61 @@
 const outputList = document.querySelector('.outputList');
 const outputContent = document.querySelector('.outputContent');
-
-function messageLi(message) {
-    const newLi = document.createElement('li');
-    newLi.textContent = message;
-    outputList.append(newLi);
-};
+const lengthItem = document.querySelector('#length span');
+const digitItem = document.querySelector('#digit span');
+const uppercaseItem = document.querySelector('#uppercase span');
+const lowercaseItem = document.querySelector('#lowercase span');
+const specialItem = document.querySelector('#special span');
+const repeatItem = document.querySelector('#repeat span');
 
 function messagePassword(message) {
     outputContent.innerHTML = message;
 };
 
-function passwordValidation() {
-    const passwordInput = document.getElementById('passwordInput');
-    const inputPassword = passwordInput.value;
-    const password = inputPassword.trim();
+function passwordValidation(password) {
+    // password.trim();
 
     if (password.length <= 0) {
-        outputList.innerHTML = '';
-        messagePassword("Please, write something!");
+        repeatItem.textContent = '❌';
+        lowercaseItem.textContent = '❌';
+        messagePassword("Level: Zero")
         return;
     }
 
     let strongPoints = 0;
 
-    outputList.innerHTML = '';
-
     if (password.length >= 8) {
         strongPoints += 1;
-        messageLi("There's at least 8 characters ✅");
+        lengthItem.textContent = '✅';
     } else {
-        messageLi("Needs at least 8 characters ❌");
+        lengthItem.textContent = '❌';
     }
     
     if (/\d/.test(password)) {
         strongPoints += 1;
-        messageLi("Digits ✅");
+        digitItem.textContent = '✅';
     } else {
-        messageLi("Needs at least a digit ❌")
+        digitItem.textContent = '❌';
     }
     
     if (/[A-Z]/.test(password)) {
         strongPoints += 1;
-        messageLi("Uppercase ✅");
+        uppercaseItem.textContent = '✅';
     }  else {
-        messageLi("Needs at least an uppercase character ❌");
+         uppercaseItem.textContent = '❌';
     }
     
     if (/[a-z]/.test(password)) {
         strongPoints += 1;
-        messageLi("Lowercase ✅");
+        lowercaseItem.textContent = '✅';
     }  else {
-        messageLi("Needs at least a lowercase character ❌");
+        lowercaseItem.textContent = '❌';
     }
     
     if (/[!@#$%^&*]/.test(password)) {
         strongPoints += 1;
-        messageLi("Special Characters ✅");
+        specialItem.textContent = '✅';
     } else {
-        messageLi("Needs at least a special character ❌");
+        specialItem.textContent = '❌';
     }
 
     let hasRepeated = false;
@@ -71,9 +68,9 @@ function passwordValidation() {
     }
 
     if (hasRepeated) {
-        messageLi("Repeated characters ❌");
+        repeatItem.textContent = '❌';
     } else {
-        messageLi("Without repeated characters ✅");
+        repeatItem.textContent = '✅';
     }
 
     if (strongPoints === 0) {
@@ -94,5 +91,11 @@ function passwordValidation() {
 
     // return strongPoints;
 };
+
+const passwordInput = document.getElementById('passwordInput');
+
+passwordInput.addEventListener('input', () => {
+    passwordValidation(passwordInput.value);
+});
 
 // module.exports = passwordValidation;
