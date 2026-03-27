@@ -12,11 +12,8 @@ main {
 }
 
 body {
-    background-color: #f1f0f3;
+    background-color: #1b263b;
     font-family: "Red Hat Display", sans-serif;
-    background-image: url('./images/bg.png');
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .card {
