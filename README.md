@@ -4,7 +4,7 @@
 
 A simple password strength checker built with JavaScript, HTML, and CSS.
 
-This project analyzes password strength based on common security criteria and gives visual feedback about what is missing or already correct.
+This project analyzes password strength based on common security criteria and gives visual feedback about what is missing or already correct and gives visual feedback about which requirements are met or missing.
 
 ## Features
 
@@ -27,9 +27,9 @@ This project analyzes password strength based on common security criteria and gi
 
 The user types a password, and the application evaluates each rule individually.
 
-Each satisfied rule adds strength points, while repeated consecutive characters reduce the score.
+Each valid rule increases the strength score, while repeated consecutive characters and spaces reduce it.
 
-A final strength level is shown based on the total score.
+Password feedback is displayed instantly with clear validation messages for each requirement.
 
 ## Purpose
 
@@ -40,10 +40,6 @@ This project was created to practice:
 * Loops
 * Regular expressions
 * Real-time UI feedback
-
-## Preview
-
-Password feedback is displayed instantly with clear validation messages for each requirement.
 
 ## Future Improvements
 * [ ] Sequence detection
