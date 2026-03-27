@@ -52,8 +52,10 @@ Password feedback is displayed instantly with clear validation messages for each
 
 ## Future Improvements
 - Sequence detection
-- Strength bar visualization
-- Real-time validation while typing
+
+* [x] Strength bar visualization
+
+* [x] Real-time validation while typing
 
 ## Images & References
 
