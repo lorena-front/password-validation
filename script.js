@@ -1,5 +1,4 @@
 const outputList = document.querySelector('.outputList');
-const outputContent = document.querySelector('.outputContent');
 const lengthItem = document.querySelector('#length');
 const digitItem = document.querySelector('#digit');
 const uppercaseItem = document.querySelector('#uppercase');
@@ -7,10 +6,7 @@ const lowercaseItem = document.querySelector('#lowercase');
 const specialItem = document.querySelector('#special');
 const repeatItem = document.querySelector('#repeat');
 const spaceItem = document.querySelector('#space');
-
-function messagePassword(message) {
-    outputContent.innerHTML = message;
-};
+const strengthFill = document.getElementById('strength-fill');
 
 function setIcon(element, icon, color) {
     element.textContent = icon;
@@ -19,18 +15,17 @@ function setIcon(element, icon, color) {
 
 function resetMessage() {
     setIcon(lengthItem, 'close', 'red');
-    setIcon(uppercaseItem, 'close', 'red');
     setIcon(digitItem, 'close', 'red');
     setIcon(uppercaseItem, 'close', 'red');
     setIcon(lowercaseItem, 'close', 'red');
     setIcon(specialItem, 'close', 'red');
     setIcon(repeatItem, 'check', 'green');
     setIcon(spaceItem, 'check', 'green');
-    messagePassword("Level: Zero");
+    strengthFill.style.width = '0%';
 };
 
 function passwordValidation(password) {
-    password.trim();
+    password = password.trim();
 
     if (password.length <= 0) {
         resetMessage();
@@ -74,7 +69,7 @@ function passwordValidation(password) {
         setIcon(specialItem, 'close', 'red');
     }
 
-    hasSpace = false;
+    let hasSpace = false;
     if (/\s/.test(password)) {
         strongPoints -= 1;
         hasSpace = true;
@@ -102,19 +97,20 @@ function passwordValidation(password) {
     }
 
     if (strongPoints === 0) {
-        messagePassword("Level: Zero");
-        return;
-    } else if (strongPoints === 5) {
-        messagePassword("Level: Strong");
-        return;
+        strengthFill.style.width = '0%';
+        strengthFill.style.backgroundColor = 'red';
     } else if (strongPoints <= 2) {
-        messagePassword("Level: Too Weak");
-        return;
+        strengthFill.style.width = '40%';
+        strengthFill.style.backgroundColor = 'red';
     } else if (strongPoints === 3) {
-        messagePassword("Level: Medium");
-        return;
+        strengthFill.style.width = '60%';
+        strengthFill.style.backgroundColor = 'orange';
+    } else if (strongPoints === 4) {
+        strengthFill.style.width = '80%';
+        strengthFill.style.backgroundColor = 'yellowgreen';
     } else {
-        messagePassword("Level: Nice");
+        strengthFill.style.width = '100%';
+        strengthFill.style.backgroundColor = 'green';
     }
 
     // return strongPoints;
