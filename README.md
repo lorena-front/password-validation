@@ -14,13 +14,8 @@ This project analyzes password strength based on common security criteria and gi
 * Detects lowercase letters
 * Detects special characters
 * Detects repeated consecutive characters
-* Displays strength levels:
-
-  * Zero
-  * Too Weak
-  * Medium
-  * Nice
-  * Strong
+* Detects the use of spaces
+* Displays strength levels through a visual bar
 
 ## Technologies Used
 
@@ -44,21 +39,15 @@ This project was created to practice:
 * Conditional logic
 * Loops
 * Regular expressions
-* UI feedback
+* Real-time UI feedback
 
 ## Preview
 
 Password feedback is displayed instantly with clear validation messages for each requirement.
 
 ## Future Improvements
-- Sequence detection
+* [ ] Sequence detection
 
 * [x] Strength bar visualization
 
 * [x] Real-time validation while typing
-
-## Images & References
-
-<a href='https://pngtree.com/freepng/shiny-blue-heart-love-symbol_8658930.html'>png image from pngtree.com/</a>
-
-[Free Ocean and Clouds Pixel Backgrounds](https://free-game-assets.itch.io/ocean-and-clouds-free-pixel-art-backgrounds)
