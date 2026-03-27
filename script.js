@@ -1,26 +1,31 @@
 const outputList = document.querySelector('.outputList');
 const outputContent = document.querySelector('.outputContent');
-const lengthItem = document.querySelector('#length span');
-const digitItem = document.querySelector('#digit span');
-const uppercaseItem = document.querySelector('#uppercase span');
-const lowercaseItem = document.querySelector('#lowercase span');
-const specialItem = document.querySelector('#special span');
-const repeatItem = document.querySelector('#repeat span');
-const spaceItem = document.querySelector('#space span');
+const lengthItem = document.querySelector('#length');
+const digitItem = document.querySelector('#digit');
+const uppercaseItem = document.querySelector('#uppercase');
+const lowercaseItem = document.querySelector('#lowercase');
+const specialItem = document.querySelector('#special');
+const repeatItem = document.querySelector('#repeat');
+const spaceItem = document.querySelector('#space');
 
 function messagePassword(message) {
     outputContent.innerHTML = message;
 };
 
+function setIcon(element, icon, color) {
+    element.textContent = icon;
+    element.style.color = color;
+};
+
 function resetMessage() {
-    lengthItem.textContent = '❌';
-    uppercaseItem.textContent = '❌';
-    digitItem.textContent = '❌';
-    uppercaseItem.textContent = '❌';
-    lowercaseItem.textContent = '❌';
-    specialItem.textContent = '❌';
-    repeatItem.textContent = '❌';
-    spaceItem.textContent = '❌';
+    setIcon(lengthItem, 'close', 'red');
+    setIcon(uppercaseItem, 'close', 'red');
+    setIcon(digitItem, 'close', 'red');
+    setIcon(uppercaseItem, 'close', 'red');
+    setIcon(lowercaseItem, 'close', 'red');
+    setIcon(specialItem, 'close', 'red');
+    setIcon(repeatItem, 'check', 'green');
+    setIcon(spaceItem, 'check', 'green');
     messagePassword("Level: Zero");
 };
 
@@ -36,37 +41,37 @@ function passwordValidation(password) {
 
     if (password.length >= 8) {
         strongPoints += 1;
-        lengthItem.textContent = '✅';
+        setIcon(lengthItem, 'check', 'green');
     } else {
-        lengthItem.textContent = '❌';
+        setIcon(lengthItem, 'close', 'red');
     }
     
     if (/\d/.test(password)) {
         strongPoints += 1;
-        digitItem.textContent = '✅';
+        setIcon(digitItem, 'check', 'green');
     } else {
-        digitItem.textContent = '❌';
+        setIcon(digitItem, 'close', 'red');
     }
     
     if (/[A-Z]/.test(password)) {
         strongPoints += 1;
-        uppercaseItem.textContent = '✅';
+        setIcon(uppercaseItem, 'check', 'green');
     }  else {
-         uppercaseItem.textContent = '❌';
+         setIcon(uppercaseItem, 'close', 'red');
     }
     
     if (/[a-z]/.test(password)) {
         strongPoints += 1;
-        lowercaseItem.textContent = '✅';
+        setIcon(lowercaseItem, 'check', 'green');
     }  else {
-        lowercaseItem.textContent = '❌';
+        setIcon(lowercaseItem, 'close', 'red');
     }
     
     if (/[!@#$%^&*]/.test(password)) {
         strongPoints += 1;
-        specialItem.textContent = '✅';
+        setIcon(specialItem, 'check', 'green');
     } else {
-        specialItem.textContent = '❌';
+        setIcon(specialItem, 'close', 'red');
     }
 
     hasSpace = false;
@@ -75,7 +80,11 @@ function passwordValidation(password) {
         hasSpace = true;
     }
 
-    spaceItem.textContent = hasSpace ? '❌' : '✅';
+    if (hasSpace) {
+        setIcon(spaceItem, 'close', 'red');
+    } else {
+        setIcon(spaceItem, 'check', 'green');
+    }
 
     let hasRepeated = false;
     for (let i = 0; i < password.length - 1; i++) {
@@ -86,7 +95,11 @@ function passwordValidation(password) {
         }
     }
 
-    repeatItem.textContent = hasRepeated ? '❌' : '✅';
+    if (hasRepeated) {
+        setIcon(repeatItem, 'close', 'red');
+    } else {
+        setIcon(repeatItem, 'check', 'green');
+    }
 
     if (strongPoints === 0) {
         messagePassword("Level: Zero");

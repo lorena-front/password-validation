@@ -10,22 +10,25 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=check,close">
+
 </head>
 <body>
     <main>
         <div class="card">
+            <h1>Strength Checker</h1>
             <label for="passwordInput">Enter your password:</label>
-            <input type="text" name="passwordInput" id="passwordInput">
-            <!-- <button type="button" onclick="passwordValidation()">Submit</button> -->
+            <input type="password" name="passwordInput" id="passwordInput">
             <div class="outputContent"><p>Level: Zero</p></div>
             <ul class="outputList">
-                <li id="length">At least 8 characters <span>❌</span></li>
-                <li id="digit">Digits <span>❌</span></li>
-                <li id="uppercase">Uppercase <span>❌</span></li>
-                <li id="lowercase">Lowercase <span>❌</span></li>
-                <li id="special">Special characters <span>❌</span></li>
-                <li id="repeat">Without repeated characters <span>❌</span></li>
-                <li id="space">Without spaces <span>❌</span></li>
+                <li>At least 8 characters <span id="length" class="material-symbols-outlined">close</span></li>
+                <li>Digits <span id="digit" class="material-symbols-outlined">close</span></li>
+                <li>Uppercase <span id="uppercase" class="material-symbols-outlined">close</span></li>
+                <li>Lowercase <span id="lowercase" class="material-symbols-outlined">close</span></li>
+                <li>Special characters <span id="special" class="material-symbols-outlined">close</span></li>
+                <li>Without repeated characters <span id="repeat" class="material-symbols-outlined">check</span></li>
+                <li>Without spaces <span id="space" class="material-symbols-outlined">check</span></li>
             </ul>
         </div>
     </main>
