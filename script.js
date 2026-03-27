@@ -25,7 +25,7 @@ function resetMessage() {
 };
 
 function passwordValidation(password) {
-    password = password.trim();
+    // password = password.trim();
 
     if (password.length <= 0) {
         resetMessage();
@@ -83,12 +83,12 @@ function passwordValidation(password) {
 
     let hasRepeated = false;
     for (let i = 0; i < password.length - 1; i++) {
-        if (password[i] === password[i + 1]) {
-            strongPoints -= 1;
-            hasRepeated = true;
-            break;
-        }
+    if (password[i] === password[i + 1] && password[i] !== ' ') {
+        strongPoints -= 1;
+        hasRepeated = true;
+        break;
     }
+}
 
     if (hasRepeated) {
         setIcon(repeatItem, 'close', 'red');
