@@ -42,8 +42,6 @@ This project was created to practice:
 * Real-time UI feedback
 
 ## Future Improvements
-* [ ] Sequence detection
-
 * [x] Strength bar visualization
 
 * [x] Real-time validation while typing
